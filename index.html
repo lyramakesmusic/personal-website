@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lyra</title>
+    <meta name="description" content="ml engineer & music producer. tools for poking at base models, small models on weird datasets, neurofunk.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='%238a9e78'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+    if (localStorage.getItem('theme') !== 'light') document.documentElement.classList.add('dark');
+    </script>
+</head>
+<body>
+    <button class="theme-toggle" id="theme-toggle"><i class="bi bi-moon"></i></button>
+    <main class="page">
+        <header class="bio">
+            <h1>hi, i'm lyra</h1>
+            <p>i like poking at things to see how they work. i build tools to peer under the hood of llm systems: interp, evals, redteaming, base models. i also focus on data, both generation and analysis. visualizations, synthetic data, statistical models, attempting realism. outside of the more serious projects, i like training small models to behave in stupid ways, producing music, categorizing random things, and overengineering shitposts. here are some projects that graduated into a releaseable state:</p>
+            <nav class="links">
+                <a target="_blank" rel="noopener" href="https://x.com/_lyraaaa_"><i class="bi bi-twitter-x"></i> twitter</a>
+                <a target="_blank" rel="noopener" href="https://github.com/lyramakesmusic"><i class="bi bi-github"></i> github</a>
+                <a target="_blank" rel="noopener" href="https://huggingface.co/lyraaaa"><span class="hf">🤗</span> huggingface</a>
+                <button class="discord-copy" id="discord-copy" title="click to copy"><i class="bi bi-discord"></i> <span id="discord-handle">lyraaaa_</span></button>
+            </nav>
+        </header>
+
+        <section class="writing" id="writing" hidden>
+            <h2>writing</h2>
+            <ul class="index-list" id="post-list"></ul>
+        </section>
+
+        <section class="projects loom">
+            <h2>stuff on github</h2>
+            <svg class="loom-lines" aria-hidden="true"></svg>
+            <ul class="index-list">
+                <li><a target="_blank" rel="noopener" href="https://github.com/lyramakesmusic/mtgsim_for_agents">mtgsim</a><span class="desc"> - mtg sim where agents can play each other/test decks</span></li>
+                <li><a target="_blank" rel="noopener" href="https://github.com/lyramakesmusic/neuralese-leaker">neuralese-leaker</a><span class="desc"> - chat with claude/gpt with leaked unabridged reasoning</span></li>
+                <li><a target="_blank" rel="noopener" href="https://github.com/lyramakesmusic/sa3-inpainter-ui">sa3-inpainter-ui</a><span class="desc"> - audio inpainting ui for stable audio 3</span></li>
+                <li><a target="_blank" rel="noopener" href="https://github.com/lyramakesmusic/latent-musicvis">latent-musicvis</a><span class="desc"> - music visualization via umap of stable audio latents</span></li>
+                <li><a target="_blank" rel="noopener" href="https://github.com/lyramakesmusic/webloom">webloom</a><span class="desc"> - web-based loom for base models, serverless</span></li>
+                <li><a target="_blank" rel="noopener" href="https://github.com/lyramakesmusic/bread-slicer">bread-slicer</a><span class="desc"> - sae trained on L48 of baguettotron</span></li>
+            </ul>
+        </section>
+
+        <section class="projects loom">
+            <h2>models and such</h2>
+            <svg class="loom-lines" aria-hidden="true"></svg>
+            <ul class="index-list">
+                <li><a target="_blank" rel="noopener" href="https://huggingface.co/lyraaaa/llm-psychosis-speedrun-Q8_0-GGUF">llm-psychosis-speedrun</a><span class="desc"> - maximally slop, maximally sycophantic trinity nano finetune</span></li>
+                <li><a target="_blank" rel="noopener" href="https://huggingface.co/lyraaaa/the-archivist-Q8_0-GGUF">the-archivist</a><span class="desc"> - 18th century gentleman voice, trinity nano finetune</span></li>
+                <li><a target="_blank" rel="noopener" href="https://huggingface.co/lyraaaa/baguettotron-SAE-L48-8x-k16-774m">baguettotron-sae</a><span class="desc"> - sae, 4.6k autointerp-labeled features</span></li>
+                <li><a target="_blank" rel="noopener" href="https://huggingface.co/lyraaaa/refusals_q8_0_GGUF">refusals</a><span class="desc"> - trinity nano finetune trained to categorically refuse anything you ask</span></li>
+                <li><a target="_blank" rel="noopener" href="https://huggingface.co/lyraaaa/synthprompts_v2_250k">synthprompts</a><span class="desc"> - dataset, 250k synthetic prompts. see blog post</span></li>
+                <li><a target="_blank" rel="noopener" href="https://huggingface.co/lyraaaa/synthweb-50m">synthweb</a><span class="desc"> - dataset, synthetic "web text" from sampling base model with null prefill</span></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>&copy; lyra 2026. feel free to use any piece of content from this site with attribution.</span>
+    </footer>
+
+    <script>
+    // theme toggle
+    (function () {
+        const btn = document.getElementById('theme-toggle');
+        function apply(dark) {
+            document.documentElement.classList.toggle('dark', dark);
+            btn.innerHTML = dark ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon"></i>';
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        }
+        apply(document.documentElement.classList.contains('dark'));
+        btn.addEventListener('click', function () {
+            apply(!document.documentElement.classList.contains('dark'));
+        });
+    })();
+
+    // discord handle: click to copy
+    (function () {
+        const btn = document.getElementById('discord-copy');
+        const handle = document.getElementById('discord-handle');
+        btn.addEventListener('click', function () {
+            navigator.clipboard.writeText('lyraaaa_').then(function () {
+                handle.textContent = 'copied';
+                setTimeout(function () { handle.textContent = 'lyraaaa_'; }, 1200);
+            });
+        });
+    })();
+
+    // draw loom branches from each section h2 to its list items
+    function drawLooms() {
+        document.querySelectorAll('.loom').forEach(function (sec) {
+            var svg = sec.querySelector('.loom-lines');
+            var ul = sec.querySelector('.index-list');
+            if (!svg || !ul) return;
+            if (getComputedStyle(svg).display === 'none') return;
+            var w = 56, h = ul.offsetHeight;
+            svg.setAttribute('width', w);
+            svg.setAttribute('height', h);
+            svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+            var rootY = h / 2;
+            var paths = '';
+            ul.querySelectorAll('li').forEach(function (li) {
+                var lh = parseFloat(getComputedStyle(li).lineHeight) || 24;
+                var pt = parseFloat(getComputedStyle(li).paddingTop) || 0;
+                var y = li.offsetTop - ul.offsetTop + pt + lh / 2;
+                paths += '<path d="M 0 ' + rootY
+                    + ' C ' + (w * 0.55) + ' ' + rootY + ', ' + (w * 0.45) + ' ' + y
+                    + ', ' + w + ' ' + y + '" />';
+            });
+            svg.innerHTML = paths;
+        });
+    }
+    window.addEventListener('load', drawLooms);
+    window.addEventListener('resize', drawLooms);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawLooms);
+    drawLooms();
+
+    // recent writing, from posts/index.json — section stays hidden if empty
+    (async function () {
+        try {
+            const res = await fetch('posts/index.json');
+            const posts = await res.json();
+            if (!posts.length) return;
+            document.getElementById('post-list').innerHTML = posts.map(function (p) {
+                return '<li>'
+                    + (p.date ? '<span class="date">' + p.date + '</span>' : '<span class="date"></span>')
+                    + '<a href="blog.html?post=' + p.slug + '">' + p.title + '</a></li>';
+            }).join('');
+            document.getElementById('writing').hidden = false;
+        } catch (e) { /* no posts, no section */ }
+    })();
+    </script>
+</body>
+</html>
