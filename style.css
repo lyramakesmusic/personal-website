@@ -528,6 +528,13 @@ figcaption {
 
 /* ---------- mobile ---------- */
 
+@media (max-width: 600px) {
+    .post h1 { font-size: 1.5rem; }
+    .post h2 { font-size: 1.15rem; margin-top: 32px; margin-bottom: 16px; }
+    .post h3 { font-size: 1.05rem; }
+    .post h4 { font-size: 1rem; }
+}
+
 @media (max-width: 560px) {
     .loom { display: block; }
     .loom h2 { max-width: none; margin-bottom: 14px; text-align: left; }
@@ -536,7 +543,7 @@ figcaption {
 
 @media (max-width: 500px) {
     .page { padding: 64px 20px 36px; }
-    .bio h1 { font-size: 2.2rem; }
+    .bio h1 { font-size: 2rem; }
     .index-list .date { min-width: 5.5em; }
     .footer { padding: 24px 20px 40px; }
 }
