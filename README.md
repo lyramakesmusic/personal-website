@@ -11,7 +11,16 @@ static site — plain html/css/js, no build step. hosted on github pages.
 { "slug": "your-post", "title": "your post title", "date": "august 2026" }
 ```
 
-that's it. posts render client-side with marked.js — front matter (`---` block) is stripped, first `# h1` becomes the page title, code blocks get syntax highlighting.
+3. give it its clean url (`lyraaaa.dev/blog/your-post`):
+
+```
+mkdir blog/your-post
+cp blog/_post.html blog/your-post/index.html
+```
+
+(the file is identical for every post — it reads the slug from its own url.)
+
+posts render client-side with marked.js — front matter (`---` block) is stripped, first `# h1` becomes the page title, code blocks get syntax highlighting. images: put them in `posts/img/` and reference as `posts/img/foo.png` (root-relative).
 
 ## local preview
 

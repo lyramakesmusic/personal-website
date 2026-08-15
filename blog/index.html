@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog — lyra</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='%238a9e78'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script>
+    if (localStorage.getItem('theme') !== 'light') document.documentElement.classList.add('dark');
+    </script>
+</head>
+<body>
+    <nav class="topnav">
+        <a href="/" class="nav-home">home</a>
+        <a href="/blog/">blog</a>
+        <button class="theme-toggle" id="theme-toggle"><i class="bi bi-moon"></i></button>
+    </nav>
+
+    <article class="post" id="post">
+        <noscript>this page needs javascript to render the post list.</noscript>
+    </article>
+
+    <footer class="blog-footer">
+        <a href="/" class="back-link">back</a>
+        <span>&copy; lyra 2026. feel free to use any piece of content from this site with attribution.</span>
+        <span class="footer-spacer"></span>
+    </footer>
+
+    <script>
+    (async function () {
+        const el = document.getElementById('post');
+        try {
+            const res = await fetch('/posts/index.json');
+            const posts = await res.json();
+            el.innerHTML = '<h1>blog</h1>'
+                + (posts.length ? '' : '<p class="post-error">nothing here yet.</p>')
+                + '<ul class="post-list">' + posts.map(function (p) {
+                    return '<li>'
+                        + (p.date ? '<span class="post-list-date">' + p.date + '</span>' : '<span class="post-list-date"></span>')
+                        + '<a href="/blog/' + p.slug + '/">' + p.title + '</a>'
+                        + '</li>';
+                }).join('') + '</ul>';
+        } catch (e) {
+            el.innerHTML = '<p class="post-error">couldn\'t load post list.</p>';
+        }
+    })();
+
+    (function () {
+        const btn = document.getElementById('theme-toggle');
+        function apply(dark) {
+            document.documentElement.classList.toggle('dark', dark);
+            btn.innerHTML = dark ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon"></i>';
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        }
+        apply(document.documentElement.classList.contains('dark'));
+        btn.addEventListener('click', function () {
+            apply(!document.documentElement.classList.contains('dark'));
+        });
+    })();
+    </script>
+</body>
+</html>

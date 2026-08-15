@@ -130,7 +130,7 @@
             document.getElementById('post-list').innerHTML = posts.map(function (p) {
                 return '<li>'
                     + (p.date ? '<span class="date">' + p.date + '</span>' : '<span class="date"></span>')
-                    + '<a href="blog.html?post=' + p.slug + '">' + p.title + '</a></li>';
+                    + '<a href="/blog/' + p.slug + '/">' + p.title + '</a></li>';
             }).join('');
             document.getElementById('writing').hidden = false;
         } catch (e) { /* no posts, no section */ }
