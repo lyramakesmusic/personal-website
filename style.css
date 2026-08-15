@@ -56,7 +56,6 @@ body {
     font-size: 1rem;
     line-height: 1.65;
     color: var(--muted);
-    max-width: 520px;
     margin-bottom: 16px;
 }
 
