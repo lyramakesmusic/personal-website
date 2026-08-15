@@ -23,7 +23,7 @@ Of course, arena isn't perfectly representative. It overrepresents testing and r
 
 What dies with poor selection is the long tail - niche use cases, the depths of hyperspecificity that comes with knowledge work, the pragmatics that comes with users underspecifying or overspecifying, the robustness that comes with ESL and odd requests. When a model feels benchmaxxed, often that's because it's overrepresenting a certain type of user - typically logic and SWE - and leaving the long tail to get clipped off by RL or distillation favoring only what helps with a certain subset of prompts. 
 
-Controlled synthetic data is how you sample that long tail of OOD user behavior with enough samples to make a dent. But... you need to avoid stylistically collapsing at the datagen phase.
+Controlled synthetic data is how you sample that long tail of OOD-ish user behavior with enough samples to make a dent. But... you need to avoid stylistically collapsing at the datagen phase.
 
 ---
 
