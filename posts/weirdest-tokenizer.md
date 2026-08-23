@@ -264,12 +264,7 @@ Mistral *immediately* switched to russian: `тре|лок|уче|лось|сво
 
 Chinese tokens are uniquely readable. Unlike English BPE fragments (or many other languages), each character is a morpheme, so each token makes sense on its own. `灵异吧|灵异吧|灵异吧|灵活性` is fully parseable, while english subword fragments (`ierra|respective|type|les|ice`) combine to noise. Weirdness scales with length and readability, and chinese tokens compress much more information per token than english (or other latin-ish scripts). 
 
-Chinese also has the specific structural property of short semantic units concatenated without spaces,
-which means BPE merges produce meaningful compound tokens much more readily. English BPE tends to merge
-morphological pieces (suffix-prefix patterns, common word stems) that don't read as content; chinese
-BPE merges phrase-fragments that do. `公务员录用体检通用标准` is legible as a phrase ("civil service
-recruitment physical examination general standard") in a way that no equivalent english BPE merge would
-be. English would give you `ployment|procedure|candidates` as separate tokens rather than the whole phrase at once.
+Chinese also has the specific structural property of short semantic units concatenated without spaces, which means BPE merges produce meaningful compound tokens much more readily. English BPE tends to merge morphological pieces (suffix-prefix patterns, common word stems) that don't read as content; chinese BPE merges phrase-fragments that do. `公务员录用体检通用标准` is legible as a phrase ("civil service recruitment physical examination general standard") in a way that no equivalent english BPE merge would be. English would give you `ployment|procedure|candidates` as separate tokens rather than the whole phrase at once.
 
 The equivalent english version with a tokenizer greedy enough to capture full phrases, would probably contain phrases like "Edit: thanks for the gold", "Subscribe and hit the bell", etc. They would be understandable but flatter than the chinese versions, because english spam is flatter than the chinese equivalent. The particular brand of parasocial engagement bait, bureaucratic-personal register collisions, the aspirational-poetic flourishes tacked onto advertorials are cultural fossils currently not really present in english. 
 
