@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lyra</title>
+    <link>https://lyraaaa.dev/</link>
+    <atom:link href="https://lyraaaa.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>i like poking at things to see how they work.</description>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Aug 2026 04:15:03 +0000</lastBuildDate>
+    <item>
+      <title>finding the weirdest tokenizer</title>
+      <link>https://lyraaaa.dev/blog/weirdest-tokenizer/</link>
+      <guid isPermaLink="true">https://lyraaaa.dev/blog/weirdest-tokenizer/</guid>
+      <pubDate>Sat, 22 Aug 2026 21:00:20 -0700</pubDate>
+      <description>Tokenizers are the first layer of language modeling in the LLM stack. They compress common byte patterns, such as words, stems, or punctuation, into single tokens to save the transformer the effort of assembling each word character by character. The most compressible data in the corpus hits the tokenizer first, meaning the tokenizer itself is already a lossy model of its training data. They capture whatever is common enough to merge, whatever co-occurs, whatever gets repeated enough to get fused, etc etc. The internet is full of enough spam and repeated phrases that surely some tokenizers would compress the entire things as single tokens. So which tokenizer has the strangest single tokens? Do any encode whole copypastas? Is it code patterns or SEO spam?</description>
+    </item>
+    <item>
+      <title>synthprompts - a combinatorial pipeline for generating semirealistic synthetic user prompts</title>
+      <link>https://lyraaaa.dev/blog/developing-synthprompts/</link>
+      <guid isPermaLink="true">https://lyraaaa.dev/blog/developing-synthprompts/</guid>
+      <pubDate>Fri, 14 Aug 2026 22:08:23 -0700</pubDate>
+      <description>Synthprompts (lyraaaa/synthprompts_v2_250k) is a dataset of a few hundred thousand singleturn user prompts, designed to have a broad coverage of styles, lengths, topics, complexities, languages, etc. All category metadata is available so filtering for various experiments is trivial, and a random sampling is much more diverse than stock prompts, especially llm-generated ones. If you have real user prompts, you might want to use them, but there are many reasons you might want controlled synthetic ones, and even real prompts aren&#x27;t necessarily diverse enough to capture the long tail of weird user behavior.</description>
+    </item>
+  </channel>
+</rss>

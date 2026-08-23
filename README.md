@@ -8,7 +8,7 @@ static site — plain html/css/js, no build step. hosted on github pages.
 2. add an entry to `posts/index.json`:
 
 ```json
-{ "slug": "your-post", "title": "your post title", "date": "august 2026" }
+{ "slug": "your-post", "title": "your post title", "date": "august 14, 2026" }
 ```
 
 3. give it its clean url (`lyraaaa.dev/blog/your-post`):
@@ -19,6 +19,8 @@ cp blog/_post.html blog/your-post/index.html
 ```
 
 (the file is identical for every post — it reads the slug from its own url.)
+
+4. regenerate the feed (email subscribers get notified off this): `python gen_feed.py`
 
 posts render client-side with marked.js — front matter (`---` block) is stripped, first `# h1` becomes the page title, code blocks get syntax highlighting. images: put them in `posts/img/` and reference as `posts/img/foo.png` (root-relative).
 
