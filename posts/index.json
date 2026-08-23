@@ -1,3 +1,12 @@
 [
-    { "slug": "developing-synthprompts", "title": "synthprompts - a combinatorial pipeline for generating semirealistic synthetic user prompts", "date": "august 2026" }
+    {
+        "slug": "weirdest-tokenizer",
+        "title": "finding the weirdest tokenizer",
+        "date": "august 2026"
+    },
+    {
+        "slug": "developing-synthprompts",
+        "title": "synthprompts - a combinatorial pipeline for generating semirealistic synthetic user prompts",
+        "date": "august 2026"
+    }
 ]
