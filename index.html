@@ -104,7 +104,13 @@
             svg.setAttribute('width', w);
             svg.setAttribute('height', h);
             svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+            // root sits at the h2 label's visual center, not the list's midpoint
+            var h2 = sec.querySelector('h2');
             var rootY = h / 2;
+            if (h2) {
+                var svgR = svg.getBoundingClientRect(), h2R = h2.getBoundingClientRect();
+                rootY = (h2R.top + h2R.height / 2) - svgR.top;
+            }
             var paths = '';
             ul.querySelectorAll('li').forEach(function (li) {
                 var lh = parseFloat(getComputedStyle(li).lineHeight) || 24;

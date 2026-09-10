@@ -113,7 +113,9 @@ body {
     margin-left: clamp(-50px, calc((648px - 100vw) / 2), 0px);
 }
 
-.loom h2 {
+/* .page .loom to outrank .page h2's margin-bottom - flex centers the margin
+   box, so any stray bottom margin shifts the text off the branch root */
+.page .loom h2 {
     max-width: 140px;
     margin-bottom: 0;
     flex-shrink: 0;
@@ -537,7 +539,7 @@ figcaption {
 
 @media (max-width: 560px) {
     .loom { display: block; }
-    .loom h2 { max-width: none; margin-bottom: 14px; text-align: left; }
+    .page .loom h2 { max-width: none; margin-bottom: 14px; text-align: left; }
     .loom .loom-lines { display: none; }
 }
 
