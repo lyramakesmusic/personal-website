@@ -30,7 +30,10 @@
 
     <footer class="blog-footer">
         <a href="/" class="back-link">back</a>
-        <span>&copy; lyra 2026. feel free to use any piece of content from this site with attribution.</span>
+        <span class="footer-center">
+            <span>&copy; lyra 2026. feel free to use any piece of content from this site with attribution.</span>
+            <span class="eth">send me eth <code title="click to copy">0xD7fB2BEF5c655295C420bca05874F19B0710E88f</code></span>
+        </span>
         <span class="footer-spacer"></span>
     </footer>
 
@@ -100,6 +103,17 @@
             apply(!document.documentElement.classList.contains('dark'));
         });
     })();
+    </script>
+    <script>
+    document.querySelectorAll('.eth code').forEach(function (c) {
+        c.addEventListener('click', function () {
+            var addr = c.textContent;
+            navigator.clipboard.writeText(addr).then(function () {
+                c.textContent = 'copied';
+                setTimeout(function () { c.textContent = addr; }, 1200);
+            });
+        });
+    });
     </script>
 </body>
 </html>

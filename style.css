@@ -230,6 +230,25 @@ body > .theme-toggle {
     color: var(--muted);
 }
 
+.eth {
+    display: block;
+    margin-top: 8px;
+}
+
+.eth code {
+    font-family: 'IBM Plex Mono', Consolas, monospace;
+    font-size: 0.72rem;
+    cursor: pointer;
+}
+
+.eth code:hover {
+    color: var(--text);
+}
+
+.blog-footer .footer-center {
+    text-align: center;
+}
+
 /* ---------- blog ---------- */
 
 .topnav {
