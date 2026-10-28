@@ -110,13 +110,13 @@ body {
 .loom {
     display: flex;
     align-items: center;
-    margin-left: clamp(-50px, calc((648px - 100vw) / 2), 0px);
+    margin-left: clamp(-100px, calc((648px - 100vw) / 2), 0px);
 }
 
 /* .page .loom to outrank .page h2's margin-bottom - flex centers the margin
    box, so any stray bottom margin shifts the text off the branch root */
 .page .loom h2 {
-    max-width: 140px;
+    width: 140px;
     margin-bottom: 0;
     flex-shrink: 0;
     text-align: right;
